@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="https://r2.layeredy.com/wordmark.png" alt="Logo" class="logo">
+        <div class="alert" id="alert-box">This is a demo site!</div>
+        <div class="status">
+            <div class="service">
+                <span>Service 1:</span>
+                <div class="tooltip">
+                    <span class="tooltip-icon">?</span>
+                    <span class="tooltiptext">Demo site</span>
+                </div>
+                <div class="status-line"></div>
+                <span class="status-indicator operational" id="service1-status">Operational</span>
+                <div class="service-line"></div>
+            </div>
+            <div class="divider"></div>
+            <div class="service">
+                <span>Service 2:</span>
+                <div class="tooltip">
+                    <span class="tooltip-icon">?</span>
+                    <span class="tooltiptext">Another demo site</span>
+                </div>
+                <div class="status-line"></div>
+                <span class="status-indicator down" id="service2-status">Down</span>
+                <div class="service-line"></div>
+            </div>
+            <div class="divider"></div>
+            <div class="service">
+                <span>Service 3:</span>
+                <div class="tooltip">
+                    <span class="tooltip-icon">?</span>
+                    <span class="tooltiptext">okay what do you expect, its another demo site...</span>
+                </div>
+                <div class="status-line"></div>
+                <span class="status-indicator maintainance" id="service3-status">Maintainance</span>
+                <div class="service-line"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
