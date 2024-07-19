@@ -11,25 +11,35 @@
     <div class="container">
         <img src="https://r2.layeredy.com/wordmark.png" alt="Logo" class="logo">
         <div class="alert" id="alert-box">This is a demo site!</div>
+        <span class="status-select">
+            <h5>Status Style</h5>
+        <select id="status-select">
+            <option value="1">Words</option>
+            <option value="2">Blips</option>
+        </select>
+        </span>
         <div class="status">
             <div class="service">
                 <span>Service 1:</span>
                 <div class="status-line"></div>
-                <span class="status-indicator operational" id="service1-status">Operational</span>
+                <span class="status-indicator operational" id="status-words">Operational</span>
+                <div class="status-circle operational" id="status-circle"></div>
                 <div class="service-line"></div>
             </div>
             <div class="divider"></div>
             <div class="service">
                 <span>Service 2:</span>
                 <div class="status-line"></div>
-                <span class="status-indicator down" id="service2-status">Down</span>
+                <span class="status-indicator down" id="status-words">Down</span>
+                <div class="status-circle down" id="status-circle"></div>
                 <div class="service-line"></div>
             </div>
             <div class="divider"></div>
             <div class="service">
                 <span>Service 3:</span>
                 <div class="status-line"></div>
-                <span class="status-indicator maintainance" id="service3-status">Maintainance</span>
+                <span class="status-indicator maintainance" id="status-words" >Maintainance</span>
+                <div class="status-circle maintainance" id="status-circle"></div>
                 <div class="service-line"></div>
             </div>
         </div>
