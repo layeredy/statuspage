@@ -1,6 +1,6 @@
 body {
     background-color: #0c0e12;
-    color: #fff;
+    color: #eff1f5;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -34,7 +34,7 @@ body::before {
     position: relative;
     box-sizing: border-box;
     z-index: 1;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.2);
 }
 
 .logo {
@@ -92,15 +92,15 @@ body::before {
 }
 
 .operational {
-    background-color: #4fc66b; 
+    background-color: #40a02b;
 }
 
 .down {
-    background-color: #e35563; 
+    background-color: #e64553;
 }
 
 .maintainance {
-    background-color: #ffaf3f;
+    background-color: #fe640b;
 }
 
 .divider {
@@ -121,30 +121,27 @@ body::before {
     animation: onlinePulse 1s infinite;
 }
 
-.status-circle  {
+.status-circle {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     margin-right: 10px;
+    display: inline-block; /* Changed from none to inline-block */
 }
 
 .status-circle.down {
-    background-color: #e35563;
+    background-color: #e64553;
     animation: offlinePulse 1s infinite;
 }
 
 .status-circle.maintainance {
-    background-color: #ffaf3f;
+    background-color: #fe740b;
     animation: maintainancePulse 1s infinite;
 }
 
 .status-circle.operational {
-    background-color: #4fc66b;
+    background-color: #40a02b;
     animation: onlinePulse 1s infinite;
-}
-
-.status-circle {
-    display: none;
 }
 
 select {
@@ -155,7 +152,6 @@ select {
     border-radius: 5px;
     cursor: pointer;
     height: 100%;
-
 }
 
 .status-select {
