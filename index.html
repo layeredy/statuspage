@@ -5,41 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Status demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="https://cdn.layeredy.com/logo.png">
 </head>
 
 <body>
+    <div class="style-toggle">
+        <button class="btn btn-secondary" id="themeToggleButton">
+            <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+    </div>
     <div class="container">
         <img src="https://r2.layeredy.com/wordmark.png" alt="Logo" class="logo">
         <div class="alert" id="alert-box">This is a demo site!</div>
         <div class="status">
             <div class="service">
-                <span>Service 1:</span>
+                <span data-tooltip="Service 1 Status">Service 1:</span>
                 <div class="status-line"></div>
-                <div class="status-circle operational" id="status-circle"></div>
-                <span class="status-indicator operational" id="status-words">Online</span>
-                <div class="service-line"></div>
+                <div class="status-circle operationalind"></div>
+                <span class="status-indicator operationalind">Online</span>
             </div>
             <div class="divider"></div>
             <div class="service">
-                <span>Service 2:</span>
+                <span data-tooltip="Service 2 Status">Service 2:</span>
                 <div class="status-line"></div>
-                <div class="status-circle down" id="status-circle"></div>
-                <span class="status-indicator down" id="status-words">Offline</span>
-                <div class="service-line"></div>
+                <div class="status-circle downind"></div>
+                <span class="status-indicator downind">Offline</span>
             </div>
             <div class="divider"></div>
             <div class="service">
-                <span>Service 3:</span>
+                <span data-tooltip="Change me in index.html">Service 3:</span>
                 <div class="status-line"></div>
-                <div class="status-circle maintainance" id="status-circle"></div>
-                <span class="status-indicator maintainance" id="status-words">Update</span>
-                <div class="service-line"></div>
+                <div class="status-circle maintenanceind"></div>
+                <span class="status-indicator maintenanceind"">Update</span>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <div class=" maintenance">
+                    <h2>Upcoming Maintenance</h2>
+                    <ul>
+                        <li>Service 1 - Change me in index.html!</li>
+                        <li>Service 2 - You get the point. These do stuff</li>
+                    </ul>
+            </div>
+
+            <div class="copyright">
+                Uptime site by <a href="https://layeredy.com" target="_blank""> Layeredy</a>
+            </div>
+            <!-- Include jQuery and Bootstrap JS -->
+            <script src=" https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                    <script src="script.js"></script>
 </body>
 
 </html>
