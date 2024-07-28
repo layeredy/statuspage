@@ -1,26 +1,38 @@
-// Listen for the status-select change event
-document.getElementById('status-select').addEventListener('change', function() {
-    // Get the selected value
-    var selectedValue = this.value;
-
-    // Get an array of all the status-circle elements
-    var statusCircles = document.getElementsByClassName('status-circle');
-    var statusTexts = document.getElementsByClassName('status-indicator');
-
-    console.log(statusCircles);
-    console.log(statusTexts);
-
-    if (selectedValue==="1") {
-        for (var i = 0; i < statusCircles.length; i++) {
-            statusCircles[i].style.display = 'none';
-            statusTexts[i].style.display = 'block';
-        }
+function setTheme(theme) {
+    document.documentElement.className = theme;
+    const themeIcon = document.getElementById('themeIcon');
+    if (theme === 'light') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        document.cookie = "theme=light; max-age=31536000; path=/";
     } else {
-        
-        for (var i = 0; i < statusCircles.length; i++) {
-            statusCircles[i].style.display = 'block';
-            statusTexts[i].style.display = 'none';
-        }
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        document.cookie = "theme=dark; max-age=31536000; path=/";
+    }
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const themePreference = getCookie('theme');
+    if (themePreference) {
+        setTheme(themePreference);
+    } else {
+        setTheme('dark');
     }
 
-})
+    const toggleButton = document.getElementById('themeToggleButton');
+    toggleButton.addEventListener('click', () => {
+        const currentTheme = document.documentElement.className;
+        if (currentTheme === 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    });
+});
