@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,43 +8,38 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="https://cdn.layeredy.com/logo.png">
 </head>
+
 <body>
     <div class="container">
         <img src="https://r2.layeredy.com/wordmark.png" alt="Logo" class="logo">
         <div class="alert" id="alert-box">This is a demo site!</div>
-        <span class="status-select">
-            <h5>Status Style</h5>
-        <select id="status-select">
-            <option value="1">Words</option>
-            <option value="2">Blips</option>
-        </select>
-        </span>
         <div class="status">
             <div class="service">
                 <span>Service 1:</span>
                 <div class="status-line"></div>
-                <span class="status-indicator operational" id="status-words">Operational</span>
                 <div class="status-circle operational" id="status-circle"></div>
+                <span class="status-indicator operational" id="status-words">Online</span>
                 <div class="service-line"></div>
             </div>
             <div class="divider"></div>
             <div class="service">
                 <span>Service 2:</span>
                 <div class="status-line"></div>
-                <span class="status-indicator down" id="status-words">Down</span>
                 <div class="status-circle down" id="status-circle"></div>
+                <span class="status-indicator down" id="status-words">Offline</span>
                 <div class="service-line"></div>
             </div>
             <div class="divider"></div>
             <div class="service">
                 <span>Service 3:</span>
                 <div class="status-line"></div>
-                <span class="status-indicator maintainance" id="status-words" >Maintainance</span>
                 <div class="status-circle maintainance" id="status-circle"></div>
+                <span class="status-indicator maintainance" id="status-words">Update</span>
                 <div class="service-line"></div>
             </div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
