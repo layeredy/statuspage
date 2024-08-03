@@ -152,6 +152,19 @@ body {
     background-color: var(--yellow);
 }
 
+.degradedind {
+    background-color: var(--yellow);
+}
+
+.severe-outageind {
+    background-color: var(--red);
+}
+
+.full-outageind {
+    background-color: var(--red);
+}
+
+
 .divider {
     height: 1px;
     background-color: var(--muted);
