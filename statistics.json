@@ -1,0 +1,14 @@
+{
+    "Site 1": {
+        "status": "Operational",
+        "timestamp": 1722705150.0638194
+    },
+    "Site 2": {
+        "status": "Maintenance",
+        "timestamp": 1722705152.0770347
+    },
+    "Site 3": {
+        "status": "Severe outage",
+        "timestamp": 1722705153.8823428
+    }
+}
