@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Software by Layeredy LLC, github.com/layeredy | layeredy.com. Developed under MIT license. Do not remove this please! -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status demo</title>
+    <title>Layeredy Status</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Include Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="https://cdn.layeredy.com/logo.png">
+
 </head>
 
 <body>
@@ -20,47 +20,96 @@
         </button>
     </div>
     <div class="container">
-        <img src="https://r2.layeredy.com/wordmark.png" alt="Logo" class="logo">
-        <div class="alert" id="alert-box">This is a demo site!</div>
-        <div class="status">
-            <div class="service">
-                <span data-tooltip="Service 1 Status">Service 1:</span>
-                <div class="status-line"></div>
-                <div class="status-circle operationalind"></div>
-                <span class="status-indicator operationalind">Online</span>
-            </div>
-            <div class="divider"></div>
-            <div class="service">
-                <span data-tooltip="Service 2 Status">Service 2:</span>
-                <div class="status-line"></div>
-                <div class="status-circle downind"></div>
-                <span class="status-indicator downind">Offline</span>
-            </div>
-            <div class="divider"></div>
-            <div class="service">
-                <span data-tooltip="Change me in index.html">Service 3:</span>
-                <div class="status-line"></div>
-                <div class="status-circle maintenanceind"></div>
-                <span class="status-indicator maintenanceind"">Update</span>
-            </div>
-        </div>
+        <a href="https://layeredy.com">
+            <img src="https://r2.layeredy.com/wordmark.png" alt="Logo" class="logo">
+        </a>
+        <div id="status-list" class="status"></div>
     </div>
 
-    <div class=" maintenance">
-                    <h2>Upcoming Maintenance</h2>
-                    <ul>
-                        <li>Service 1 - Change me in index.html!</li>
-                        <li>Service 2 - You get the point. These do stuff</li>
-                    </ul>
-            </div>
+    <div class="maintenance">
+        <h2>Upcoming Maintenance</h2>
+        <ul id="maintenance-list">
+            <li>Loading maintenance info...</li>
+        </ul>
+    </div>
 
-            <div class="copyright">
-                Uptime site by <a href="https://layeredy.com" target="_blank""> Layeredy</a>
-            </div>
-            <!-- Include jQuery and Bootstrap JS -->
-            <script src=" https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                    <script src="script.js"></script>
+    <div class="copyright">
+        Uptime site by <a href="https://layeredy.com" target="_blank">Layeredy</a> <strong>|</strong> Open source on <a href="https://github.com/layeredy/statuspage" target="_blank">Github</a>
+    </div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        async function fetchStatus() {
+            try {
+                const response = await fetch('statistics.json'); // Replace with your API endpoint (usually /statistics.json)
+                if (!response.ok) {
+                    throw new Error('Unable to fetch status data from remote server');
+                }
+                const data = await response.json();
+                const statusList = document.getElementById('status-list');
+
+                statusList.innerHTML = '';
+
+                for (const [name, info] of Object.entries(data)) {
+                    const statusDiv = document.createElement('div');
+                    statusDiv.className = 'service';
+
+                    const nameSpan = document.createElement('span');
+                    nameSpan.textContent = name + ': ';
+
+                    const statusLine = document.createElement('div');
+                    statusLine.className = 'status-line';
+
+                    const statusCircle = document.createElement('div');
+                    statusCircle.className = 'status-circle ' + (info.status.toLowerCase().replace(' ', '-') + 'ind');
+
+                    const statusIndicator = document.createElement('span');
+                    statusIndicator.textContent = info.status;
+                    statusIndicator.className = 'status-indicator ' + (info.status.toLowerCase().replace(' ', '-') + 'ind');
+
+                    statusDiv.appendChild(nameSpan);
+                    statusDiv.appendChild(statusLine);
+                    statusDiv.appendChild(statusCircle);
+                    statusDiv.appendChild(statusIndicator);
+                    statusList.appendChild(statusDiv);
+
+                    const divider = document.createElement('div');
+                    divider.className = 'divider';
+                    statusList.appendChild(divider);
+                }
+            } catch (error) {
+                console.error('Error fetching the status:', error);
+                const statusList = document.getElementById('status-list');
+                statusList.innerHTML = '<div class="alert alert-danger">Something went wrong while loading this page</div>';
+            }
+        }
+
+        async function fetchMaintenance() {
+            try {
+                const response = await fetch('maintenance.json'); // Update the URL to fetch maintenance data
+                if (!response.ok) {
+                    throw new Error('Unable to fetch maintenance data from remote server');
+                }
+                const data = await response.json();
+                const maintenanceList = document.getElementById('maintenance-list');
+
+                maintenanceList.innerHTML = '';
+
+                const maintenanceItem = document.createElement('li');
+                maintenanceItem.textContent = data.maintenance_message;
+                maintenanceList.appendChild(maintenanceItem);
+            } catch (error) {
+                console.error('Error fetching the maintenance message:', error);
+                const maintenanceList = document.getElementById('maintenance-list');
+                maintenanceList.innerHTML = '<li>Something went wrong while loading the maintenance message</li>';
+            }
+        }
+
+        fetchStatus();
+        fetchMaintenance();
+    </script>
 </body>
-
+<script src="script.js"></script>
 </html>
